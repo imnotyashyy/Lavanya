@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#edf5f0" />
+<title>Minty Jamun — Lavanya</title>
+<style>
+:root{--ink:#202824;--muted:#77837d;--glass:rgba(255,255,255,.58);--line:rgba(255,255,255,.78)}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;background:radial-gradient(ellipse at 15% 8%,rgba(185,235,211,.65),transparent 34%),radial-gradient(ellipse at 88% 80%,rgba(213,190,226,.52),transparent 35%),linear-gradient(145deg,#f6faf7,#e9f1ed 52%,#f1ebf4);display:flex;justify-content:center;padding:26px 16px 32px}
+.app{width:min(100%,440px)}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:7px 3px 20px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:750;letter-spacing:-.5px;font-size:17px}
+.brand-mark{width:34px;height:34px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(145deg,#e1f8ea,#c7ead8);box-shadow:inset 0 1px 0 #fff}
+.tag{font-size:11px;font-weight:650;color:#52655b;padding:8px 11px;border-radius:99px;background:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.8)}
+.hero{text-align:center;padding:12px 10px 18px}
+.eyebrow{color:#6a8778;text-transform:uppercase;letter-spacing:2.3px;font-size:10px;font-weight:750}
+h1{font-size:clamp(38px,10vw,49px);line-height:1.02;letter-spacing:-2.5px;margin:12px 0 9px;font-weight:780}
+h1 span{color:#684574}
+.subtitle{color:var(--muted);font-size:14px;margin:0}
+.drink-card{position:relative;overflow:hidden;height:190px;margin:8px 0 18px;border-radius:30px;background:linear-gradient(135deg,rgba(255,255,255,.75),rgba(255,255,255,.25));border:1px solid var(--line);box-shadow:0 18px 48px rgba(43,73,57,.08),inset 0 1px 0 #fff;display:flex;align-items:center;justify-content:center}
+.drink-card:before,.drink-card:after{content:"";position:absolute;border-radius:50%;filter:blur(1px)}
+.drink-card:before{width:180px;height:180px;left:-65px;top:80px;background:rgba(179,230,200,.4)}
+.drink-card:after{width:190px;height:190px;right:-75px;top:-75px;background:rgba(203,174,218,.35)}
+.glass-wrap{position:relative;width:100px;height:135px;z-index:1;animation:float 4s ease-in-out infinite}
+.glass{position:absolute;inset:6px 8px 0;overflow:hidden;border:2px solid rgba(255,255,255,.92);border-top:1px solid #fff;border-radius:10px 10px 25px 25px;transform:perspective(150px) rotateX(-4deg);background:linear-gradient(90deg,rgba(255,255,255,.58),rgba(255,255,255,.08) 28%,rgba(255,255,255,.3) 70%,rgba(255,255,255,.7));box-shadow:inset 0 0 0 1px rgba(123,84,138,.08),0 14px 25px rgba(57,38,65,.12)}
+.liquid{position:absolute;bottom:0;left:0;right:0;height:78%;background:linear-gradient(110deg,#4c245b,#74407f 48%,#492451);border-radius:0 0 22px 22px}
+.liquid:before{content:"";position:absolute;top:-5px;left:-10%;width:120%;height:13px;background:#8f6b9b;border-radius:50%;opacity:.75}
+.ice{position:absolute;width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,#fff9,#b9dcd9aa);border:1px solid #ffffffa8;transform:rotate(17deg);top:37px;left:20px;box-shadow:inset 2px 2px 3px #fff8}
+.ice.i2{top:55px;left:49px;transform:rotate(-14deg);width:19px;height:20px}
+.straw{position:absolute;width:7px;height:93px;background:linear-gradient(90deg,#b8e9ce,#e4fff0);border:1px solid #ffffffb8;border-radius:5px;top:-8px;right:25px;transform:rotate(9deg);z-index:2}
+.mint{position:absolute;top:20px;right:8px;font-size:30px;transform:rotate(15deg);z-index:3;filter:drop-shadow(0 3px 2px #46694c25)}
+.spark{position:absolute;z-index:2;color:#fff;font-size:19px}.s1{top:30px;left:24%}.s2{bottom:28px;right:23%;font-size:14px}
+.game-panel{border-radius:30px;padding:19px;background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);box-shadow:0 18px 48px rgba(43,73,57,.08),inset 0 1px 0 #fff}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat{background:rgba(255,255,255,.48);border:1px solid rgba(255,255,255,.75);border-radius:20px;padding:14px 15px}
+.stat-label{color:var(--muted);font-size:11px;font-weight:650;letter-spacing:.4px}
+.stat-value{font-size:29px;letter-spacing:-1px;font-weight:760;margin-top:3px}
+.stat-value small{font-size:13px;color:var(--muted);font-weight:600;letter-spacing:0}
+.game-head{display:flex;align-items:center;justify-content:space-between;margin:21px 2px 11px}
+.game-head h2{margin:0;font-size:16px;letter-spacing:-.3px}
+.status{font-size:11px;color:#65816f;display:flex;align-items:center;gap:6px}
+.dot{width:6px;height:6px;border-radius:50%;background:#75c99c}
+.playfield{position:relative;height:310px;overflow:hidden;border-radius:22px;background:linear-gradient(160deg,rgba(220,244,229,.8),rgba(246,241,248,.83));border:1px solid rgba(255,255,255,.88);box-shadow:inset 0 2px 12px rgba(72,89,77,.04);touch-action:manipulation}
+.playfield:before{content:"";position:absolute;inset:0;opacity:.3;pointer-events:none;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:19px 19px}
+.field-message{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;z-index:2}
+.field-icon{font-size:38px;margin-bottom:9px}
+.field-message strong{font-size:16px;letter-spacing:-.3px}
+.field-message span{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.6;max-width:220px}
+.jamun{position:absolute;z-index:3;width:46px;height:50px;border:0;padding:0;background:transparent;cursor:pointer;display:grid;place-items:center;filter:drop-shadow(0 6px 5px rgba(61,33,73,.18));animation:fall linear forwards;-webkit-tap-highlight-color:transparent}
+.jamun .fruit{display:block;width:34px;height:40px;position:relative;border-radius:48% 48% 45% 45% / 37% 37% 62% 62%;background:radial-gradient(ellipse at 29% 22%,#b49ac4 0,#855a97 18%,#60356e 49%,#3b2147 90%);border:1px solid rgba(255,255,255,.27)}
+.jamun .fruit:before{content:"";position:absolute;top:6px;left:6px;width:7px;height:18px;border-radius:50%;background:linear-gradient(#fff9,transparent);transform:rotate(22deg);filter:blur(.5px)}
+.jamun .fruit:after{content:"";position:absolute;width:13px;height:7px;top:-3px;left:15px;border-radius:0 100% 0 100%;background:#78b991;transform:rotate(-20deg)}
+.jamun:active{transform:scale(.82)}
+.pop{position:absolute;z-index:5;pointer-events:none;font-size:14px;font-weight:800;color:#694378;animation:pop .55s ease-out forwards}
+.bottom-row{display:flex;align-items:center;gap:10px;margin-top:14px}
+.start-btn{flex:1;border:0;border-radius:17px;padding:15px 18px;color:white;font:700 14px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:.1px;background:linear-gradient(135deg,#593466,#7c5489);box-shadow:0 8px 18px rgba(81,49,94,.2);cursor:pointer;transition:transform .2s,filter .2s}
+.start-btn:hover{filter:brightness(1.07);transform:translateY(-1px)}.start-btn:active{transform:scale(.98)}
+.reset-btn{width:49px;height:49px;border-radius:16px;border:1px solid #fff;background:rgba(255,255,255,.65);color:#5e5264;font-size:20px;cursor:pointer}
+.hint{text-align:center;color:#87928b;font-size:11px;margin:13px 0 1px}
+footer{text-align:center;color:#89958e;font-size:10px;letter-spacing:.4px;padding:20px 0 2px}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-8px) rotate(2deg)}}
+@keyframes fall{from{transform:translateY(-58px) rotate(-8deg)}to{transform:translateY(370px) rotate(22deg)}}
+@keyframes pop{0%{opacity:1;transform:translateY(0) scale(.8)}100%{opacity:0;transform:translateY(-30px) scale(1.25)}}
+@media(max-width:380px){body{padding:17px 11px}.game-panel{padding:13px}.playfield{height:285px}.stat-value{font-size:25px}.hero{padding-top:8px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<main class="app">
+<header class="topbar"><div class="brand"><div class="brand-mark">🌿</div> minty jamun</div><div class="tag">FOR LAVANYA ♡</div></header>
+<section class="hero"><div class="eyebrow">A little refreshment</div><h1>Minty <span>Jamun.</span></h1><p class="subtitle">Sip the vibe. Catch the jamuns.</p></section>
+<section class="drink-card" aria-label="Illustration of a minty jamun drink"><span class="spark s1">✦</span><span class="spark s2">✧</span><div class="glass-wrap"><div class="straw"></div><div class="mint">🌿</div><div class="glass"><div class="liquid"></div><div class="ice"></div><div class="ice i2"></div></div></div></section>
+<section class="game-panel">
+<div class="stats"><div class="stat"><div class="stat-label">YOUR SCORE</div><div class="stat-value" id="score">0 <small>pts</small></div></div><div class="stat"><div class="stat-label">TIME LEFT</div><div class="stat-value"><span id="time">30</span> <small>sec</small></div></div></div>
+<div class="game-head"><h2>Jamun Catch 🍇</h2><div class="status"><span class="dot"></span><span id="status">Ready to play</span></div></div>
+<div class="playfield" id="playfield"><div class="field-message" id="overlay"><div class="field-icon">🫐</div><strong>Ready, Lavanya?</strong><span>Tap every falling jamun to collect points. You have 30 seconds!</span></div></div>
+<div class="bottom-row"><button class="start-btn" id="startBtn">Start game&nbsp; →</button><button class="reset-btn" id="resetBtn" aria-label="Reset game" title="Reset">↻</button></div>
+<p class="hint">Tap the jamuns before they disappear.</p>
+</section>
+<footer>MADE FOR LAVANYA · WITH MINT &amp; PURPLE 💜</footer>
+</main>
+<script>
+(() => {
+ const field=document.getElementById('playfield'),overlay=document.getElementById('overlay');
+ const scoreEl=document.getElementById('score'),timeEl=document.getElementById('time');
+ const statusEl=document.getElementById('status'),startBtn=document.getElementById('startBtn'),resetBtn=document.getElementById('resetBtn');
+ let score=0,timeLeft=30,playing=false,timerId=null,spawnId=null,spawnTimeout=null;
+ function clearTimers(){clearInterval(timerId);clearInterval(spawnId);clearTimeout(spawnTimeout);timerId=spawnId=spawnTimeout=null}
+ function clearFruit(){field.querySelectorAll('.jamun,.pop').forEach(el=>el.remove())}
+ function updateStats(){scoreEl.innerHTML=`${score} <small>pts</small>`;timeEl.textContent=timeLeft}
+ function showOverlay(icon,title,subtitle){overlay.innerHTML=`<div class="field-icon">${icon}</div><strong>${title}</strong><span>${subtitle}</span>`;overlay.style.display='flex'}
+ function spawnFruit(){
+  if(!playing)return;
+  const fruit=document.createElement('button');fruit.className='jamun';fruit.type='button';fruit.setAttribute('aria-label','Catch jamun for one point');fruit.innerHTML='<span class="fruit"></span>';
+  const maxLeft=Math.max(4,field.clientWidth-52);fruit.style.left=(4+Math.random()*(maxLeft-4))+'px';
+  fruit.style.animationDuration=(2.3+Math.random()*1.2)+'s';
+  fruit.addEventListener('click',()=>{
+   if(!playing||fruit.dataset.caught)return;fruit.dataset.caught='1';score++;updateStats();
+   const pop=document.createElement('span');pop.className='pop';pop.textContent='+1';pop.style.left=(fruit.offsetLeft+12)+'px';pop.style.top=(fruit.offsetTop+5)+'px';field.appendChild(pop);fruit.remove();pop.addEventListener('animationend',()=>pop.remove());
+  });
+  fruit.addEventListener('animationend',()=>fruit.remove());field.appendChild(fruit)
+ }
+ function endGame(){
+  playing=false;clearTimers();clearFruit();statusEl.textContent='Round complete';startBtn.textContent='Play again  →';
+  const title=score>=20?'Jamun superstar!':score>=10?'Sweet catching!':'Nice try, Lavanya!';
+  showOverlay('🏆',title,`You caught ${score} jamun${score===1?'':'s'}! Final score: ${score} points.`)
+ }
+ function startGame(){
+  clearTimers();clearFruit();score=0;timeLeft=30;playing=true;updateStats();overlay.style.display='none';statusEl.textContent='Game in progress';startBtn.textContent='Playing…';
+  spawnFruit();spawnTimeout=setTimeout(spawnFruit,350);spawnId=setInterval(spawnFruit,650);
+  timerId=setInterval(()=>{timeLeft--;updateStats();if(timeLeft<=0)endGame()},1000)
+ }
+ function resetGame(){
+  playing=false;clearTimers();clearFruit();score=0;timeLeft=30;updateStats();statusEl.textContent='Ready to play';startBtn.textContent='Start game  →';
+  showOverlay('🫐','Ready, Lavanya?','Tap every falling jamun to collect points. You have 30 seconds!')
+ }
+ startBtn.addEventListener('click',startGame);resetBtn.addEventListener('click',resetGame);updateStats()
+})();
+</script>
+</body>
+</html>
